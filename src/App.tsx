@@ -1,4 +1,6 @@
 import "./App.css";
+import { useState } from "react";
+import { cn } from "@/utils/classnames.ts";
 
 import { Button } from "@components/baseDemo/Button.tsx";
 
@@ -29,7 +31,25 @@ function CardComponent({ product, idx }: { product: string; idx: number }) {
     </div>
   );
 }
+
 function App() {
+  const [activeWeather, setActiveWeather] = useState("(請選擇天氣)");
+  const suggestionList: { [keyName: string]: string } = {
+    大晴天超熱: "帶陽傘",
+    雷雨: "開車出門",
+    颱風: "颱風假在家休息",
+    颶風: "別出門了吧...",
+  };
+  function changeActiveWeather(weatherName: string): void {
+    setActiveWeather(weatherName);
+  }
+  // function changeActiveWeather(
+  //   event: React.MouseEvent<HTMLButtonElement>,
+  //   weatherName: string
+  // ) {
+  //   setActiveWeather(weatherName);
+  // }
+
   return (
     <>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -65,11 +85,11 @@ function App() {
 
         {/* children */}
         <div className="ring ring-blue-400 my-4">
+          children:
           {/* 傳入元素 */}
           <Children>
             <div>我是直接傳入的元素</div>
           </Children>
-
           {/* 傳入元件 */}
           <Children>
             <ChildComponent />
@@ -77,12 +97,47 @@ function App() {
         </div>
 
         {/* map 迴圈 (v-for) */}
-        <div className="flex gap-x-3 ring ring-blue-400 my-4">
-          {["蛋糕", "布丁", "舒芙蕾", "泡芙"].map(
-            (product: string, idx: number) => {
-              return <CardComponent product={product} idx={idx} />;
-            }
-          )}
+        <div className=" ring ring-blue-400 my-4">
+          map 迴圈 (v-for):
+          <div className="flex gap-x-3">
+            {["蛋糕", "布丁", "舒芙蕾", "泡芙"].map(
+              (productName: string, idx: number) => {
+                return (
+                  <CardComponent
+                    product={productName}
+                    idx={idx}
+                    key={`card-${productName}`}
+                  />
+                );
+              }
+            )}
+          </div>
+        </div>
+
+        {/* 條件判斷元素渲染 (v-if) */}
+        <div className="ring ring-blue-400 my-4">
+          <p>條件判斷元素渲染 (v-if)</p>
+          <p>今天的天氣是:{activeWeather}</p>
+          {["大晴天超熱", "雷雨", "颱風", "颶風"].map((weatherName) => {
+            return (
+              <button
+                type="button"
+                className={cn(
+                  "focus:outline-none ring ring-primary active:bg-blue-600/30 hover:bg-blue-600/20 inline-block me-3",
+                  weatherName === activeWeather && "bg-violet-300"
+                )}
+                key={`btn-product-${weatherName}`}
+                onClick={() => changeActiveWeather(weatherName)}
+              >
+                {/* onClick={(event) => changeActiveWeather(event, weatherName)} */}
+                {weatherName}
+              </button>
+            );
+          })}
+          <p>
+            建議:
+            <span>{suggestionList[activeWeather] || "請選擇天氣"}</span>
+          </p>
         </div>
       </div>
     </>
