@@ -3,6 +3,9 @@ import "./App.css";
 // @ts-ignore
 import { Button } from "@components/todos/Button.tsx";
 
+// @ts-ignore
+import { TestSlots } from "@components/todos/TestSlots.tsx";
+
 function fatherFn() {
   console.log("父層的方法");
 }
@@ -16,6 +19,16 @@ function App() {
           className="focus:outline-none ring ring-primary active:bg-blue-600/30 hover:bg-blue-600/20"
           fatherFn={fatherFn}
         />
+
+        {/* Slots */}
+        <div className="ring ring-blue-400 my-4">
+          透過文字傳遞插槽:
+          <TestSlots
+            header={<header>表頭</header>}
+            main={<main>主要區塊</main>}
+            footer={<footer>表尾</footer>}
+          />
+        </div>
       </div>
     </>
   );
