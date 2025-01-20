@@ -1,19 +1,13 @@
 import "./App.css";
 
-// @ts-ignore
 import { Button } from "@components/baseDemo/Button.tsx";
 
-// @ts-ignore
 import { Slots } from "@components/baseDemo/Slots.tsx";
 
-// @ts-ignore
 import { Header } from "@components/baseDemo/slots/header.tsx";
-// @ts-ignore
 import { Main } from "@components/baseDemo/slots/main.tsx";
-// @ts-ignore
 import { Footer } from "@components/baseDemo/slots/footer.tsx";
 
-// @ts-ignore
 import { UseState } from "@components/baseDemo/UseState.tsx";
 
 function fatherFn() {
