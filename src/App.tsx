@@ -10,8 +10,17 @@ import { Footer } from "@components/baseDemo/slots/footer.tsx";
 
 import { UseState } from "@components/baseDemo/UseState.tsx";
 
+import { Children } from '@components/baseDemo/Children.tsx';
+
 function fatherFn() {
   console.log("父層的方法");
+}
+function ChildComponent() {
+  return (
+    <div>
+      我是傳入的子元件~
+    </div>
+  )
 }
 function App() {
   return (
@@ -43,6 +52,18 @@ function App() {
 
         <div className="ring ring-blue-400 my-4">
           <UseState />
+        </div>
+
+        <div className="ring ring-blue-400 my-4">
+          {/* 傳入元素 */}
+          <Children>
+            <div>我是直接傳入的元素</div>
+          </Children>
+
+          {/* 傳入元件 */}
+          <Children>
+            <ChildComponent />
+          </Children>
         </div>
       </div>
     </>
