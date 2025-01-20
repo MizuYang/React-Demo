@@ -1,17 +1,17 @@
 import "./App.css";
 
 // @ts-ignore
-import { Button } from "@components/todos/Button.tsx";
+import { Button } from "@components/baseDemo/Button.tsx";
 
 // @ts-ignore
-import { TestSlots } from "@components/todos/TestSlots.tsx";
+import { Slots } from "@components/baseDemo/Slots.tsx";
 
 // @ts-ignore
-import { Header } from "@components/slots/header.tsx";
+import { Header } from "@components/baseDemo/slots/header.tsx";
 // @ts-ignore
-import { Main } from "@components/slots/main.tsx";
+import { Main } from "@components/baseDemo/slots/main.tsx";
 // @ts-ignore
-import { Footer } from "@components/slots/footer.tsx";
+import { Footer } from "@components/baseDemo/slots/footer.tsx";
 
 function fatherFn() {
   console.log("父層的方法");
@@ -30,7 +30,7 @@ function App() {
         {/* Slots */}
         <div className="ring ring-blue-400 my-4">
           透過文字傳遞插槽:
-          <TestSlots
+          <Slots
             header={<header>表頭</header>}
             main={<main>主要區塊</main>}
             footer={<footer>表尾</footer>}
@@ -38,7 +38,7 @@ function App() {
         </div>
         <div className="ring ring-blue-400 my-4">
           透過元件傳遞插槽:
-          <TestSlots
+          <Slots
             header={<Header />}
             main={<Main />}
             footer={<Footer />}

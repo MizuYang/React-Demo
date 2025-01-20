@@ -1,5 +1,4 @@
-export function TestSlots(props): JSX.Element {
-  console.log(props);
+export function Slots(props): JSX.Element {
   return (
     <div>
       {props.header}
