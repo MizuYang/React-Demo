@@ -23,6 +23,7 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      '@typescript-eslint/ban-ts-comment': 'off', // 禁用對 @ts-ignore 的檢測
     },
   },
 )
