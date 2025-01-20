@@ -43,12 +43,12 @@ function App() {
   function changeActiveWeather(weatherName: string): void {
     setActiveWeather(weatherName);
   }
-  // function changeActiveWeather(
-  //   event: React.MouseEvent<HTMLButtonElement>,
-  //   weatherName: string
-  // ) {
-  //   setActiveWeather(weatherName);
-  // }
+
+  const [activeComponentName, setActiveComponent] = useState("header");
+
+  function changeActiveComponent(comName: string): void {
+    setActiveComponent(comName);
+  }
 
   return (
     <>
@@ -116,28 +116,54 @@ function App() {
 
         {/* 條件判斷元素渲染 (v-if) */}
         <div className="ring ring-blue-400 my-4">
-          <p>條件判斷元素渲染 (v-if)</p>
-          <p>今天的天氣是:{activeWeather}</p>
-          {["大晴天超熱", "雷雨", "颱風", "颶風"].map((weatherName) => {
-            return (
-              <button
-                type="button"
-                className={cn(
-                  "focus:outline-none ring ring-primary active:bg-blue-600/30 hover:bg-blue-600/20 inline-block me-3",
-                  weatherName === activeWeather && "bg-violet-300"
-                )}
-                key={`btn-product-${weatherName}`}
-                onClick={() => changeActiveWeather(weatherName)}
-              >
-                {/* onClick={(event) => changeActiveWeather(event, weatherName)} */}
-                {weatherName}
-              </button>
-            );
-          })}
-          <p>
-            建議:
-            <span>{suggestionList[activeWeather] || "請選擇天氣"}</span>
-          </p>
+          {/* 顯示單純文字 */}
+          <div>
+            <p>條件判斷元素渲染 (v-if)</p>
+            <p>今天的天氣是:{activeWeather}</p>
+            {["大晴天超熱", "雷雨", "颱風", "颶風"].map((weatherName) => {
+              return (
+                <button
+                  type="button"
+                  className={cn(
+                    "focus:outline-none ring ring-primary active:bg-blue-600/30 hover:bg-blue-600/20 inline-block me-3",
+                    weatherName === activeWeather && "bg-violet-300"
+                  )}
+                  key={`btn-product-${weatherName}`}
+                  onClick={() => changeActiveWeather(weatherName)}
+                >
+                  {/* onClick={(event) => changeActiveWeather(event, weatherName)} */}
+                  {weatherName}
+                </button>
+              );
+            })}
+            <p>
+              建議:
+              <span>{suggestionList[activeWeather] || "請選擇天氣"}</span>
+            </p>
+          </div>
+
+          <hr style={{ margin: "10px" }} />
+
+          {/* 顯示元件 */}
+          <div>
+            <p>選擇要顯示的元件</p>
+            <button
+              type="button"
+              className="ring ring-amber-500"
+              onClick={() => changeActiveComponent("header")}
+            >
+              header
+            </button>
+            <button
+              type="button"
+              className="ring ring-amber-500"
+              onClick={() => changeActiveComponent("footer")}
+            >
+              footer
+            </button>
+
+            {activeComponentName === "header" ? <Header /> : <Footer />}
+          </div>
         </div>
       </div>
     </>
