@@ -6,6 +6,13 @@ import { Button } from "@components/todos/Button.tsx";
 // @ts-ignore
 import { TestSlots } from "@components/todos/TestSlots.tsx";
 
+// @ts-ignore
+import { Header } from "@components/slots/header.tsx";
+// @ts-ignore
+import { Main } from "@components/slots/main.tsx";
+// @ts-ignore
+import { Footer } from "@components/slots/footer.tsx";
+
 function fatherFn() {
   console.log("父層的方法");
 }
@@ -27,6 +34,14 @@ function App() {
             header={<header>表頭</header>}
             main={<main>主要區塊</main>}
             footer={<footer>表尾</footer>}
+          />
+        </div>
+        <div className="ring ring-blue-400 my-4">
+          透過元件傳遞插槽:
+          <TestSlots
+            header={<Header />}
+            main={<Main />}
+            footer={<Footer />}
           />
         </div>
       </div>
