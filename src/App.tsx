@@ -13,6 +13,9 @@ import { Main } from "@components/baseDemo/slots/main.tsx";
 // @ts-ignore
 import { Footer } from "@components/baseDemo/slots/footer.tsx";
 
+// @ts-ignore
+import { UseState } from "@components/baseDemo/UseState.tsx";
+
 function fatherFn() {
   console.log("父層的方法");
 }
@@ -21,11 +24,13 @@ function App() {
     <>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         {/* {title} */}
-        <Button
-          name="按鈕元件"
-          className="focus:outline-none ring ring-primary active:bg-blue-600/30 hover:bg-blue-600/20"
-          fatherFn={fatherFn}
-        />
+        <div className="ring ring-blue-400 my-4">
+          <Button
+            name="按鈕元件"
+            className="focus:outline-none ring ring-primary active:bg-blue-600/30 hover:bg-blue-600/20"
+            fatherFn={fatherFn}
+          />
+        </div>
 
         {/* Slots */}
         <div className="ring ring-blue-400 my-4">
@@ -36,13 +41,14 @@ function App() {
             footer={<footer>表尾</footer>}
           />
         </div>
+
         <div className="ring ring-blue-400 my-4">
           透過元件傳遞插槽:
-          <Slots
-            header={<Header />}
-            main={<Main />}
-            footer={<Footer />}
-          />
+          <Slots header={<Header />} main={<Main />} footer={<Footer />} />
+        </div>
+
+        <div className="ring ring-blue-400 my-4">
+          <UseState />
         </div>
       </div>
     </>
