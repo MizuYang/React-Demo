@@ -56,7 +56,7 @@ function App() {
 
   return (
     <>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2">
         {/* {title} */}
         <div className="ring ring-blue-400 my-4">
           <Button
