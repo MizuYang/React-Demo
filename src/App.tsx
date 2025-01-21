@@ -14,6 +14,8 @@ import { UseState } from "@components/baseDemo/UseState.tsx";
 
 import { Children } from "@components/baseDemo/Children.tsx";
 
+import { UseEffect } from "@components/baseDemo/UseEffect.tsx";
+
 function fatherFn() {
   console.log("父層的方法");
 }
@@ -164,6 +166,11 @@ function App() {
 
             {activeComponentName === "header" ? <Header /> : <Footer />}
           </div>
+        </div>
+
+        {/* useEffect */}
+        <div className="ring ring-blue-400 my-4">
+          <UseEffect />
         </div>
       </div>
     </>
