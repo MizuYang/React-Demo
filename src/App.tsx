@@ -18,6 +18,8 @@ import { UseEffect } from "@components/baseDemo/UseEffect.tsx";
 
 import { Father } from "@components/baseDemo/useContext/Father.tsx";
 
+import { UseMemo } from '@/components/baseDemo/UseMemo.tsx';
+
 function fatherFn() {
   console.log("父層的方法");
 }
@@ -178,6 +180,11 @@ function App() {
         {/* useContext 跨層級資料溝通 */}
         <div className="ring ring-blue-400 my-4">
           <Father />
+        </div>
+
+        {/* useMemo */} 
+        <div className="ring ring-blue-400 my-4">
+          <UseMemo />
         </div>
       </div>
     </>
