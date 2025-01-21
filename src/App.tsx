@@ -16,6 +16,8 @@ import { Children } from "@components/baseDemo/Children.tsx";
 
 import { UseEffect } from "@components/baseDemo/UseEffect.tsx";
 
+import { Father } from "@components/baseDemo/useContext/Father.tsx";
+
 function fatherFn() {
   console.log("父層的方法");
 }
@@ -171,6 +173,11 @@ function App() {
         {/* useEffect */}
         <div className="ring ring-blue-400 my-4">
           <UseEffect />
+        </div>
+
+        {/* useContext 跨層級資料溝通 */}
+        <div className="ring ring-blue-400 my-4">
+          <Father />
         </div>
       </div>
     </>
