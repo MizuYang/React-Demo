@@ -10,6 +10,10 @@ export function UseEffect() {
   useEffect(() => {
     console.log("useEffect: responseCount", responseCount);
     if (responseCount > 5) setResponseCount(0);
+
+    return () => {
+      console.log('cleanup function');
+    }
   }, [responseCount]);
 
   function addResponseCount() {
