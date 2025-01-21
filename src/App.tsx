@@ -20,6 +20,8 @@ import { Father } from "@components/baseDemo/useContext/Father.tsx";
 
 import { UseMemo } from '@/components/baseDemo/UseMemo.tsx';
 
+import  { UseReducer }from '@components/baseDemo/UseReducer.tsx'
+
 function fatherFn() {
   console.log("父層的方法");
 }
@@ -185,6 +187,11 @@ function App() {
         {/* useMemo */} 
         <div className="ring ring-blue-400 my-4">
           <UseMemo />
+        </div>
+
+        {/* useReducer */} 
+        <div className="ring ring-blue-400 my-4">
+          <UseReducer />
         </div>
       </div>
     </>
